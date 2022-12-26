@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool isprime(int n){
+    if(n==0 || n==1) return false;
+    for(int i=2;i<n/2;i++){
+        if(n%i==0) return false;
+    }
+    return true;
+}
+int main(){
+    string s;
+    cin>>s;
+    int h[27]={0};
+    for(int i=0;s[i]!='\0';i++){
+        h[s[i]-'a']++;
+    }
+    vector<int> v;
+    for(int i=0;i<27;i++){
+        if(isprime(h[i])){
+            v.push_back(h[i]);
+        }
+    }
+    int sum=0,p=1;
+    for(int i=0;i<v.size();i++){
+        sum+=v[i];
+        p*=v[i];
+    }
+    cout<<sum<<" "<<p;
+}
