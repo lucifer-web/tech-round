@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int a[n][n];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cin>>a[i][j];
+        }
+    }
+    int x;
+    cin>>x;
+    int r,c,s=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(a[i][j]==x){
+                r=i;
+                c=j;
+                s=i+j;
+            }
+        }
+    }
+    int v=(s+c)%n;
+    int num = a[r][v];
+    int j=1,ans=0;
+    while(num>0){
+        int r=num%10;
+        ans+=pow(r,j);
+        j++;
+        num/=10;
+    }
+    cout<<ans;
+}
